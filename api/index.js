@@ -1,9 +1,9 @@
 import express from 'express';
 import dotenv from "dotenv";
-import db from "../database/configdb.js";
-import userRoutes from '../routes/user.route.js';
-import tokenRoutes from '../routes/token.route.js';
-import contactRoutes from '../routes/contact.route.js'; // Importa as rotas de contatos
+import db from "./database/configdb.js"; // Corrigido o caminho
+import userRoutes from './routes/user.route.js'; // Corrigido o caminho
+import tokenRoutes from './routes/token.route.js';
+import contactRoutes from './routes/contact.route.js'; // Importa as rotas de contatos
 
 dotenv.config();
 
