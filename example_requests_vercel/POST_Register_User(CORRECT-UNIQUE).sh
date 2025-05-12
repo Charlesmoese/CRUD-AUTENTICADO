@@ -1,5 +1,5 @@
 curl --request POST \
-  --url 'https://express-backend-teste.vercel.app/users/register' \
+  --url 'https://crud-autenticado-kappa.vercel.app/users/register' \
   --header 'Content-Type: application/json' \
   --data '{
     "username": "newuser2",
