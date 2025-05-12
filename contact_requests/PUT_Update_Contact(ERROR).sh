@@ -1,8 +1,9 @@
 curl --request PUT \
-  --url 'http://localhost:3000/contacts/{id}' \
+  --url 'http://localhost:3000/contacts/{contact_id}' \
+  --header 'Authorization: Bearer <your_jwt_token>' \
   --header 'Content-Type: application/json' \
   --data '{
     "name": "",
-    "email": "invalid-email",
-    "phone": "12345"
+    "email": "invalid@example.com",
+    "phone": ""
   }'

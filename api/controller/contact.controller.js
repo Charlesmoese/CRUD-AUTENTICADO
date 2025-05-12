@@ -10,14 +10,14 @@ const createContact = async (req, res) => {
     }
 
     try {
-        // Verifica se o número de telefone já existe
-        const existingContact = await Contact.findOne({ phone });
+        // Verifica se o número de telefone já existe para o usuário logado
+        const existingContact = await Contact.findOne({ phone, userId: req.userId });
         if (existingContact) {
-            return res.status(400).json({ message: "Phone number already exists" });
+            return res.status(400).json({ message: "Phone number already exists for this user" });
         }
 
-        // Cria o novo contato
-        const newContact = await Contact.create({ name, email, phone });
+        // Cria o novo contato associado ao usuário logado
+        const newContact = await Contact.create({ name, email, phone, userId: req.userId });
         console.log("Contact created:", newContact);
         return res.status(200).json({ message: 'Contact created successfully', contact: newContact });
     } catch (error) {
@@ -28,8 +28,8 @@ const createContact = async (req, res) => {
 
 const getAllContacts = async (req, res) => {
     try {
-        console.log("Fetching all contacts...");
-        const contacts = await Contact.find();
+        console.log("Fetching all contacts for user:", req.userId);
+        const contacts = await Contact.find({ userId: req.userId }); // Filtra contatos pelo usuário logado
         console.log("Contacts fetched successfully:", contacts);
         return res.status(200).json(contacts);
     } catch (error) {

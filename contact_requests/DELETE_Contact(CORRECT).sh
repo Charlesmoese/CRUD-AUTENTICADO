@@ -1,6 +1,4 @@
 curl --request DELETE \
   --url 'http://localhost:3000/contacts/{contact_id}' \
-  --header 'Content-Type: application/json' \
-  --data '{
-    "message": "Contact deleted successfully"
-  }'
+  --header 'Authorization: Bearer <your_jwt_token>' \
+  --header 'Content-Type: application/json'
