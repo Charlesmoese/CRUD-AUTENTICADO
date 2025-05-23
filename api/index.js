@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from "dotenv";
-import cors from 'cors'; // Corrija aqui!
+import cors from 'cors';
 import db from "./database/configdb.js";
 import userRoutes from './routes/user.route.js';
 import contactRoutes from './routes/contact.route.js';
@@ -25,6 +25,10 @@ app.use("/users", userRoutes);
 app.use("/contacts", contactRoutes);
 app.get("/", (req, res) => res.send("Express on Vercel"));
 
-app.listen(3000, () => {
-    console.log('Server running at http://localhost:3000');
-});
+// Remova o app.listen!
+// app.listen(3000, () => {
+//     console.log('Server running at http://localhost:3000');
+// });
+
+// Exporte o handler para o Vercel
+export default app;
