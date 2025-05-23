@@ -1,8 +1,9 @@
 import express from 'express';
 import dotenv from "dotenv";
-import db from "./database/configdb.js"; // Corrigido o caminho
-import userRoutes from './routes/user.route.js'; // Corrigido o caminho
-import contactRoutes from './routes/contact.route.js'; // Importa as rotas de contatos
+import cors from 'cors'; // Corrija aqui!
+import db from "./database/configdb.js";
+import userRoutes from './routes/user.route.js';
+import contactRoutes from './routes/contact.route.js';
 
 dotenv.config();
 
@@ -10,9 +11,14 @@ db.connect();
 
 const app = express();
 
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://crud-frontend-autenticado.vercel.app'],
+  credentials: true
+})); // Coloque o CORS antes das rotas!
+
 app.use(express.json());
 app.use("/users", userRoutes);
-app.use("/contacts", contactRoutes); // Adiciona as rotas de contatos
+app.use("/contacts", contactRoutes);
 app.get("/", (req, res) => res.send("Express on Vercel"));
 
 app.listen(3000, () => {
