@@ -12,9 +12,13 @@ db.connect();
 const app = express();
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://crud-frontend-autenticado.vercel.app'],
+  origin: [
+    'http://localhost:5173',
+    'https://crud-frontend-autenticado.vercel.app',
+    'https://shiny-lamp-r4wr4v9jw6x6fpp9r-3000.app.github.dev'
+  ],
   credentials: true
-})); // Coloque o CORS antes das rotas!
+}));
 
 app.use(express.json());
 app.use("/users", userRoutes);
